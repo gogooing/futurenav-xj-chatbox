@@ -125,6 +125,7 @@ export default function SettingWindow(props: Props) {
                     autoFocus
                     margin="dense"
                     label={t('openai api key')}
+                    onCopy={(event) => event.preventDefault()}
                     type="password"
                     fullWidth
                     variant="outlined"

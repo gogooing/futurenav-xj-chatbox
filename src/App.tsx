@@ -757,7 +757,7 @@ function MessageInput(props: {
                         <TextField
                             inputRef={props.textareaRef}
                             multiline
-                            label="Prompt"
+                            label="你的提示"
                             value={messageInput}
                             onChange={(event) => setMessageInput(event.target.value)}
                             fullWidth
