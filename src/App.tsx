@@ -376,7 +376,7 @@ function Main() {
                                 marginRight: '5px',
                             }} />
                             <Typography variant="h5" color="inherit" component="div" style={{fontSize: '26px'}}>
-                                Xiaojun Chatbox
+                                晓君
                             </Typography>
                         </Toolbar>
 

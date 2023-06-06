@@ -85,14 +85,12 @@
             "csp": null
         },
         "updater": {
-            "active": true,
+            "active": false,
             "endpoints": [
-                "https://releases.chatboxapp.xyz/chatbox/{{target}}/{{current_version}}",
-                "https://gist.githubusercontent.com/Bin-Huang/cf0b7684e28b30d760ba02417bbac916/raw/chatbox.releases.json",
-                "https://gist.githubusercontent.com/Bin-Huang/cf0b7684e28b30d760ba02417bbac916/raw"
+                "https://github.com/gogooing/futurenav-xj-chatbox/releases/latest/download/latest.json"
             ],
             "dialog": true,
-            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDRCNkM4MDE2NDJBNTU3ODcKUldTSFY2VkNGb0JzUzZyT2Fzamx5dDB4QVQ5cHU1aU1tR3RYRVh4V204REkvMjFheWNzRG80dDEK"
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE2MjZFOTA1QTA0ODY0MTMKUldRVFpFaWdCZWttRmpvQlRjTE5PSXdoSVhRSmV5VjRCUFg2Wm96SlVFOUVrbjBOMlpBNkJiemEK"
         },
         "windows": [
             {
