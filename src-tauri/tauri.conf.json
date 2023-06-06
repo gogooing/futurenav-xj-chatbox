@@ -8,7 +8,7 @@
         "withGlobalTauri": true
     },
     "package": {
-        "productName": "晓君聊天",
+        "productName": "XiaoJun Chat",
         "version": "0.0.1"
     },
     "tauri": {
