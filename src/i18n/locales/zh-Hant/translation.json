@@ -1,7 +1,7 @@
 {
   "settings": "設定",
   "theme": "主題",
-  "openai api key": "OpenAI API 金鑰",
+  "openai api key": "曉君 金鑰",
   "show word count": "顯示字數",
   "show estimated token count": "顯示預估 Token 數",
   "proxy": "代理",
@@ -12,6 +12,7 @@
   "api host": "API 域名",
   "model": "模型",
   "token": "Token",
+  "font size":"字體大小",
   "max tokens in context": "上下文中的 Token 上限",
   "max tokens per reply": "每則回覆的 Token 上限",
   "show model name": "顯示模型名稱",

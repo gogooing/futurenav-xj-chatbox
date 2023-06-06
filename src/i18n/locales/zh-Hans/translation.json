@@ -1,7 +1,7 @@
 {
   "settings": "设置",
   "theme": "主题",
-  "openai api key": "OpenAI API 密钥",
+  "openai api key": "晓君 密钥",
   "show word count": "显示字数统计",
   "show estimated token count": "显示预估 Token 字数统计",
   "proxy": "代理",
@@ -12,6 +12,7 @@
   "api host": "API 域名",
   "model": "模型",
   "token": "Token",
+  "font size":"字体大小",
   "max tokens in context": "上下文中的最大 Token 数",
   "max tokens per reply": "每个回复的最大 Token 数",
   "show model name": "显示模型名称",

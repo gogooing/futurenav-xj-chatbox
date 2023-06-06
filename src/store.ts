@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 export function getDefaultSettings(): Settings {
     return {
         openaiKey: '',
-        apiHost: 'https://api.openai.com',
+        apiHost: 'https:/xiaojunai.com/api',
         model: "gpt-3.5-turbo",
         temperature: 0.7,
         maxContextSize: "4000",
@@ -21,7 +21,7 @@ export function getDefaultSettings(): Settings {
         showTokenCount: false,
         showModelName: false,
         theme: ThemeMode.System,
-        language: 'en',
+        language: 'zh-Hans',
         fontSize: 13,
     }
 }

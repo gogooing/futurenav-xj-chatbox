@@ -20,10 +20,10 @@ import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 
 const { useEffect } = React
 const models: string[] = ['gpt-3.5-turbo', 'gpt-3.5-turbo-0301', 'gpt-4', 'gpt-4-0314', 'gpt-4-32k', 'gpt-4-32k-0314'];
-const languages: string[] = ['en', 'zh-Hans', 'zh-Hant'];
+const languages: string[] = ['zh-Hans', 'en', 'zh-Hant'];
 const languageMap: { [key: string]: string } = {
-    'en': 'English',
     'zh-Hans': '简体中文',
+    'en': 'English',
     'zh-Hant': '繁體中文',
 };
 interface Props {
@@ -144,7 +144,7 @@ export default function SettingWindow(props: Props) {
                     <ThemeChangeButton value={settingsEdit.theme} onChange={theme => changeModeWithPreview(theme)} />
                 </FormControl>
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                    <InputLabel>Font Size</InputLabel>
+                    <InputLabel>{t('font size')}</InputLabel>
                     <Select
                         labelId="select-font-size"
                         value={settingsEdit.fontSize}
@@ -190,35 +190,6 @@ export default function SettingWindow(props: Props) {
                             onChange={(e) => setSettingsEdit({ ...settingsEdit, apiHost: e.target.value.trim() })}
                         />
 
-                        {
-                            !settingsEdit.apiHost.match(/^(https?:\/\/)?api.openai.com(:\d+)?$/) && (
-                                <Alert severity="warning">
-                                    {t('proxy warning', {apiHost:settingsEdit.apiHost })}
-                                    <Button onClick={() => setSettingsEdit({ ...settingsEdit, apiHost: getDefaultSettings().apiHost })}>{t('reset')}</Button>
-                                </Alert>
-                            )
-                        }
-                        {
-                            settingsEdit.apiHost.startsWith('http://') && (
-                                <Alert severity="warning">
-                                    {<Trans
-                                    i18nKey="protocol warning"
-                                    components={{ bold: <strong /> }}
-                                    />}
-                                </Alert>
-                            )
-                        }
-                        {
-                            !settingsEdit.apiHost.startsWith('http') && (
-                                <Alert severity="error">
-                                    {<Trans
-                                    i18nKey="protocol error"
-                                    components={{ bold: <strong /> }}
-                                    />}
-                                </Alert>
-                            )
-                        }
-
                     </AccordionDetails>
                 </Accordion>
                 <Accordion>
@@ -228,21 +199,7 @@ export default function SettingWindow(props: Props) {
                         <Typography>{t('model')} & {t('token')} </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Alert severity="warning">
-                            {t('settings modify warning')}
-                            {t('please make sure you know what you are doing.')}
-                            {t('click here to')}
-                            <Button onClick={() => setSettingsEdit({
-                                ...settingsEdit,
-                                model: getDefaultSettings().model,
-                                maxContextSize: getDefaultSettings().maxContextSize,
-                                maxTokens: getDefaultSettings().maxTokens,
-                                showModelName: getDefaultSettings().showModelName,
-                                temperature: getDefaultSettings().temperature,
-                            })}>{t('reset')}</Button>
-                            {t('to default values.')}
-                        </Alert>
-
+                    
                         <FormControl fullWidth variant="outlined" margin="dense">
                             <InputLabel htmlFor="model-select">{t('model')}</InputLabel>
                             <Select

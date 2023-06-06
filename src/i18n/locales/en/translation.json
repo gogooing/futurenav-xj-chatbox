@@ -1,7 +1,7 @@
 {
   "settings": "Settings",
   "theme": "Theme",
-  "openai api key": "OpenAI API Key",
+  "openai api key": "XiaoJun Key",
   "show word count": "Show word count",
   "show estimated token count": "Show estimated token count",
   "proxy": "Proxy",
@@ -12,6 +12,7 @@
   "api host": "API Host",
   "model": "Model",
   "token": "Token",
+  "font size":"Font Size",
   "max tokens in context": "Max Tokens in Context",
   "max tokens per reply": "Max Tokens per Reply",
   "show model name": "Show Model Name",
