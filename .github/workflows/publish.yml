@@ -20,7 +20,7 @@ jobs:
           - target: x86_64-pc-windows-msvc
             platform: windows-latest
 
-    runs-on: self-hosted
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v3
 
