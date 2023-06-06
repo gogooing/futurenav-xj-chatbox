@@ -1,7 +1,7 @@
 {
-  "name": "xiaojun-ai",
-  "productName": "xiaojun-ai",
-  "version": "0.0.4",
+  "name": "xiaojun-chatbox",
+  "productName": "xiaojun-chatbox",
+  "version": "0.0.5",
   "private": true,
   "description": "a cross-platform desktop client for ChatGPT API (OpenAI API)",
   "scripts": {
