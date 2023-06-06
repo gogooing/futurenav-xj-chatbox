@@ -8,7 +8,7 @@
         "withGlobalTauri": true
     },
     "package": {
-        "productName": "XiaoJun Chat",
+        "productName": "XiaoJun AI",
         "version": "0.0.3"
     },
     "tauri": {
@@ -97,7 +97,7 @@
                 "fullscreen": false,
                 "height": 800,
                 "resizable": true,
-                "title": "Xiaojun Chatbox",
+                "title": "Xiaojun AI",
                 "width": 1000
             }
         ]

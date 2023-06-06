@@ -1,2 +1,2 @@
 # futurenav-xj-chatbox
-XiaoJun ChatBox
+XiaoJun AI
