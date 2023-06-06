@@ -20,6 +20,14 @@ import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 
 const { useEffect } = React
 const models: string[] = ['gpt-3.5-turbo', 'gpt-3.5-turbo-0301', 'gpt-4', 'gpt-4-0314', 'gpt-4-32k', 'gpt-4-32k-0314'];
+const modelsNew: { [key: string]: String } = {
+    'gpt-3.5-turbo': 'XiaoJun 3.5',
+    'gpt-3.5-turbo-0301': 'XiaoJun 3.5 0301',
+    'gpt-4': 'XiaoJun 4',
+    'gpt-4-0314': 'XiaoJun 4 0314',
+    'gpt-4-32k': 'XiaoJun 4 32k',
+    'gpt-4-32k-0314': 'XiaoJun 4 32k 0314'
+}
 const languages: string[] = ['zh-Hans', 'en', 'zh-Hant'];
 const languageMap: { [key: string]: string } = {
     'zh-Hans': '简体中文',
@@ -175,7 +183,7 @@ export default function SettingWindow(props: Props) {
                         onChange={(e, checked) => setSettingsEdit({ ...settingsEdit, showTokenCount: checked })}
                     />
                 </FormGroup>
-                <Accordion>
+                <AccordionDis>
                     <AccordionSummary aria-controls="panel1a-content">
                         <Typography>{t('proxy')}</Typography>
                     </AccordionSummary>
@@ -191,7 +199,7 @@ export default function SettingWindow(props: Props) {
                         />
 
                     </AccordionDetails>
-                </Accordion>
+                </AccordionDis>
                 <Accordion>
                     <AccordionSummary
                         aria-controls="panel1a-content"
@@ -199,7 +207,7 @@ export default function SettingWindow(props: Props) {
                         <Typography>{t('model')} & {t('token')} </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                    
+
                         <FormControl fullWidth variant="outlined" margin="dense">
                             <InputLabel htmlFor="model-select">{t('model')}</InputLabel>
                             <Select
@@ -207,11 +215,14 @@ export default function SettingWindow(props: Props) {
                                 id="model-select"
                                 value={settingsEdit.model}
                                 onChange={(e) => setSettingsEdit({ ...settingsEdit, model: e.target.value })}>
-                                {models.map((model) => (
-                                    <MenuItem key={model} value={model}>
-                                        {model}
-                                    </MenuItem>
-                                ))}
+                                {models.map((model) => {
+                                    const newModelValue = modelsNew[model];
+                                    return (
+                                        <MenuItem key={model} value={model}>
+                                            {newModelValue}
+                                        </MenuItem>
+                                    );
+                                })}
                             </Select>
                         </FormControl>
 
@@ -322,6 +333,18 @@ export default function SettingWindow(props: Props) {
 
 const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+    border: `1px solid ${theme.palette.divider}`,
+    '&:not(:last-child)': {
+        borderBottom: 0,
+    },
+    '&:before': {
+        display: 'none',
+    },
+}));
+
+const AccordionDis = styled((props: AccordionProps) => (
+    <MuiAccordion disableGutters elevation={0} square {...props} style={{ display: 'none' }} />
 ))(({ theme }) => ({
     border: `1px solid ${theme.palette.divider}`,
     '&:not(:last-child)': {

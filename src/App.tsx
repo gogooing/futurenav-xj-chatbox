@@ -171,10 +171,10 @@ function Main() {
                 setAtScrollBottom(false);
             }
             setNeedScroll(scrollHeight > clientHeight);
-          };
+        };
 
-          handleScroll();
-          messageListRef.current.addEventListener("scroll", debounce(handleScroll, 100));
+        handleScroll();
+        messageListRef.current.addEventListener("scroll", debounce(handleScroll, 100));
     }, []);
     const messageListToTop = () => {
         if (!messageListRef.current) {
@@ -341,161 +341,171 @@ function Main() {
                 height: '100%',
             }}>
                 {showMenu && (
-                <Grid item
-                    sx={{
-                        height: '100%',
-                        [theme.breakpoints.down("sm")]: {
-                            position: 'absolute',
-                            zIndex: 100,
-                            left: '20px',
-                            right: 0,
-                            bottom: 0,
-                            top: 0,
-                        },
-                    }}
-                >
-                    <Stack
-                        className='ToolBar'
+                    <Grid item
                         sx={{
-                            width: '210px',
                             height: '100%',
                             [theme.breakpoints.down("sm")]: {
                                 position: 'absolute',
-                                zIndex: 1,
+                                zIndex: 100,
+                                left: '20px',
+                                right: 0,
+                                bottom: 0,
+                                top: 0,
                             },
                         }}
-                        spacing={2}
                     >
-                        <Toolbar variant="dense" sx={{
-                            display: "flex",
-                            alignItems: "flex-end",
-                        }} >
-                            <img src={icon} style={{
-                                width: '35px',
-                                height: '35px',
-                                marginRight: '5px',
-                            }} />
-                            <Typography variant="h5" color="inherit" component="div" style={{fontSize: '26px'}}>
-                                晓君
-                            </Typography>
-                        </Toolbar>
-
-                        <MenuList
+                        <Stack
+                            className='ToolBar'
                             sx={{
-                                width: '100%',
-                                position: 'relative',
-                                overflow: 'auto',
-                                height: '60vh',
-                                '& ul': { padding: 0 },
+                                width: '210px',
+                                height: '100%',
+                                [theme.breakpoints.down("sm")]: {
+                                    position: 'absolute',
+                                    zIndex: 1,
+                                },
                             }}
-                            className="scroll"
-                            subheader={
-                                <ListSubheader component="div">
-                                    {t('chat')}
-                                </ListSubheader>
-                            }
-                            component="div"
-                            ref={sessionListRef}
+                            spacing={2}
                         >
-                            <DndContext
-                                modifiers={[restrictToVerticalAxis]}
-                                sensors={sensors}
-                                collisionDetection={closestCenter}
-                                onDragEnd={handleDragEnd}
-                            >
-                                <SortableContext items={sortedSessions} strategy={verticalListSortingStrategy}>
-                                {
-                                    sortedSessions.map((session, ix) => (
-                                        <SortableItem key={session.id} id={session.id}>
-                                            <SessionItem key={session.id}
-                                                selected={store.currentSession.id === session.id}
-                                                session={session}
-                                                switchMe={() => {
-                                                    store.switchCurrentSession(session)
-                                                    textareaRef?.current?.focus()
-                                                }}
-                                                deleteMe={() => store.deleteChatSession(session)}
-                                                copyMe={() => {
-                                                    const newSession = createSession(session.name + ' copied')
-                                                    newSession.messages = session.messages
-                                                    store.createChatSession(newSession, ix)
-                                                }}
-                                                switchStarred={() => {
-                                                    store.updateChatSession({
-                                                        ...session,
-                                                        starred: !session.starred
-                                                    })
-                                                }}
-                                                editMe={() => setConfigureChatConfig(session)}
-                                            />
-                                        </SortableItem>
-                                    ))
+                            <Toolbar variant="dense" sx={{
+                                display: "flex",
+                                alignItems: "flex-end",
+                            }} >
+                                <img src={icon} style={{
+                                    width: '35px',
+                                    height: '35px',
+                                    marginRight: '5px',
+                                }} />
+                                <Typography variant="h5" color="inherit" component="div" style={{ fontSize: '26px' }}>
+                                    晓君AI
+                                </Typography>
+                            </Toolbar>
+
+                            <MenuList
+                                sx={{
+                                    width: '100%',
+                                    position: 'relative',
+                                    overflow: 'auto',
+                                    height: '60vh',
+                                    '& ul': { padding: 0 },
+                                }}
+                                className="scroll"
+                                subheader={
+                                    <ListSubheader component="div">
+                                        {t('chat')}
+                                    </ListSubheader>
                                 }
-                                </SortableContext>
-                            </DndContext>
-                        </MenuList>
-
-                        <Divider />
-
-                        <MenuList>
-                            <MenuItem onClick={handleCreateNewSession} >
-                                <ListItemIcon>
-                                    <IconButton><AddIcon fontSize="small" /></IconButton>
-                                </ListItemIcon>
-                                <ListItemText>
-                                    {t('new chat')}
-                                </ListItemText>
-                                <Typography variant="body2" color="text.secondary">
-                                    {/* ⌘N */}
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem onClick={() => {
-                                setOpenSettingWindow(true)
-                            }}
+                                component="div"
+                                ref={sessionListRef}
                             >
-                                <ListItemIcon>
-                                    <IconButton><SettingsIcon fontSize="small" /></IconButton>
-                                </ListItemIcon>
-                                <ListItemText>
-                                    {t('settings')}
-                                </ListItemText>
-                                <Typography variant="body2" color="text.secondary">
-                                    {/* ⌘N */}
-                                </Typography>
-                            </MenuItem>
+                                <DndContext
+                                    modifiers={[restrictToVerticalAxis]}
+                                    sensors={sensors}
+                                    collisionDetection={closestCenter}
+                                    onDragEnd={handleDragEnd}
+                                >
+                                    <SortableContext items={sortedSessions} strategy={verticalListSortingStrategy}>
+                                        {
+                                            sortedSessions.map((session, ix) => (
+                                                <SortableItem key={session.id} id={session.id}>
+                                                    <SessionItem key={session.id}
+                                                        selected={store.currentSession.id === session.id}
+                                                        session={session}
+                                                        switchMe={() => {
+                                                            store.switchCurrentSession(session)
+                                                            textareaRef?.current?.focus()
+                                                        }}
+                                                        deleteMe={() => store.deleteChatSession(session)}
+                                                        copyMe={() => {
+                                                            const newSession = createSession(session.name + ' copied')
+                                                            newSession.messages = session.messages
+                                                            store.createChatSession(newSession, ix)
+                                                        }}
+                                                        switchStarred={() => {
+                                                            store.updateChatSession({
+                                                                ...session,
+                                                                starred: !session.starred
+                                                            })
+                                                        }}
+                                                        editMe={() => {
+                                                            setConfigureChatConfig(session)
+                                                            // store.addToast(t('hihi'));
+                                                            // if (!session.messages.some(message => {
+                                                            //     navigator.clipboard.writeText(message.role);
+                                                            //     store.addToast(t('copied to clipboard'));
+                                                            //     message.role === 'system'
+                                                            // })) {
+                                                            //     setConfigureChatConfig(session)
+                                                            // }
+                                                        }}
+                                                    />
+                                                </SortableItem>
+                                            ))
+                                        }
+                                    </SortableContext>
+                                </DndContext>
+                            </MenuList>
 
-                            <MenuItem onClick={() => setOpenAboutWindow(true)}>
-                                <ListItemIcon>
-                                    <IconButton>
-                                        <InfoOutlinedIcon fontSize="small" />
-                                    </IconButton>
-                                </ListItemIcon>
-                                <ListItemText>
-                                    <Badge color="primary" variant="dot" invisible={!store.needCheckUpdate}
-                                    sx={{ paddingRight: '8px' }} >
-                                        <Typography sx={{ opacity: 0.5 }}>
-                                            {t('About')} ({store.version})
-                                        </Typography>
-                                    </Badge>
-                                </ListItemText>
-                            </MenuItem>
-                        </MenuList>
-                    </Stack>
-                    <Box
-                        onClick={() => setShowMenu(false)}
-                        sx={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                            [theme.breakpoints.up("sm")]: {
-                                display: 'none',
-                            },
-                        }}
-                    ></Box>
-                </Grid>)}
+                            <Divider />
+
+                            <MenuList>
+                                <MenuItem onClick={handleCreateNewSession} >
+                                    <ListItemIcon>
+                                        <IconButton><AddIcon fontSize="small" /></IconButton>
+                                    </ListItemIcon>
+                                    <ListItemText>
+                                        {t('new chat')}
+                                    </ListItemText>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {/* ⌘N */}
+                                    </Typography>
+                                </MenuItem>
+                                <MenuItem onClick={() => {
+                                    setOpenSettingWindow(true)
+                                }}
+                                >
+                                    <ListItemIcon>
+                                        <IconButton><SettingsIcon fontSize="small" /></IconButton>
+                                    </ListItemIcon>
+                                    <ListItemText>
+                                        {t('settings')}
+                                    </ListItemText>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {/* ⌘N */}
+                                    </Typography>
+                                </MenuItem>
+
+                                <MenuItem onClick={() => setOpenAboutWindow(true)}>
+                                    <ListItemIcon>
+                                        <IconButton>
+                                            <InfoOutlinedIcon fontSize="small" />
+                                        </IconButton>
+                                    </ListItemIcon>
+                                    <ListItemText>
+                                        <Badge color="primary" variant="dot" invisible={!store.needCheckUpdate}
+                                            sx={{ paddingRight: '8px' }} >
+                                            <Typography sx={{ opacity: 0.5 }}>
+                                                {t('About')} ({store.version})
+                                            </Typography>
+                                        </Badge>
+                                    </ListItemText>
+                                </MenuItem>
+                            </MenuList>
+                        </Stack>
+                        <Box
+                            onClick={() => setShowMenu(false)}
+                            sx={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                                [theme.breakpoints.up("sm")]: {
+                                    display: 'none',
+                                },
+                            }}
+                        ></Box>
+                    </Grid>)}
                 <Grid item xs
                     sx={{
                         width: '0px',
@@ -506,7 +516,7 @@ function Main() {
                         height: '100%',
                         position: 'relative',
                     }} >
-                        <Toolbar style={{padding: '0 10px'}}>
+                        <Toolbar style={{ padding: '0 10px' }}>
                             <IconButton onClick={() => setShowMenu(!showMenu)} >
                                 {
                                     !showMenu ? (
@@ -515,7 +525,7 @@ function Main() {
                                             height: '30px',
                                         }} />
                                     ) : (
-                                        <MenuOpenIcon style={{fontSize: '26px'}} />
+                                        <MenuOpenIcon style={{ fontSize: '26px' }} />
                                     )
                                 }
                             </IconButton>
@@ -610,14 +620,14 @@ function Main() {
                                 }}
                                 orientation="vertical"
                             >
-                                <IconButton 
-                                    onClick={() => messageListToTop()} 
-                                    sx={{visibility: atScrollTop ? "hidden" : "visible",}}>
+                                <IconButton
+                                    onClick={() => messageListToTop()}
+                                    sx={{ visibility: atScrollTop ? "hidden" : "visible", }}>
                                     <ArrowCircleUpIcon />
                                 </IconButton>
-                                <IconButton 
+                                <IconButton
                                     onClick={() => messageListToBottom()}
-                                    sx={{visibility: atScrollBottom ? "hidden" : "visible",}}>
+                                    sx={{ visibility: atScrollBottom ? "hidden" : "visible", }}>
                                     <ArrowCircleDownIcon />
                                 </IconButton>
                             </ButtonGroup>)}
@@ -737,7 +747,7 @@ function MessageInput(props: {
     }, [])
 
     return (
-        <form  onSubmit={(e) => {
+        <form onSubmit={(e) => {
             e.preventDefault()
             submit()
         }}>
@@ -771,7 +781,7 @@ function MessageInput(props: {
                     <Grid item xs='auto'>
                         <Button type='submit' variant="contained" size='large'
                             style={{ padding: '15px 16px' }}>
-                                <SendIcon />
+                            <SendIcon />
                         </Button>
                     </Grid>
                 </Grid>

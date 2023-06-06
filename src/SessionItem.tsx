@@ -41,43 +41,43 @@ export default function SessionItem(props: Props) {
 
     return (
         <>
-        <MenuItem
-            key={session.id}
-            selected={selected}
-            onClick={() => switchMe()}
-            onMouseEnter={() => {
-                setHovering(true)
-            }}
-            onMouseOver={() => {
-                setHovering(true)
-            }}
-            onMouseLeave={() => {
-                setHovering(false)
-            }}
-        >
-            <ListItemIcon>
-                <IconButton><ChatBubbleOutlineOutlinedIcon fontSize="small" /></IconButton>
-            </ListItemIcon>
-            <ListItemText>
-                <Typography variant="inherit" noWrap>
-                    {session.name}
-                </Typography>
-            </ListItemText>
-            {
-                <IconButton onClick={handleClick} sx={{ color: 'primary.main' }} >
-                    {
-                        session.starred ? (
-                            <StarIcon fontSize="small" />
-                        ) : (
-                            hovering && (
-                                <MoreHorizOutlinedIcon fontSize="small" />
+            <MenuItem
+                key={session.id}
+                selected={selected}
+                onClick={() => switchMe()}
+                onMouseEnter={() => {
+                    setHovering(true)
+                }}
+                onMouseOver={() => {
+                    setHovering(true)
+                }}
+                onMouseLeave={() => {
+                    setHovering(false)
+                }}
+            >
+                <ListItemIcon>
+                    <IconButton><ChatBubbleOutlineOutlinedIcon fontSize="small" /></IconButton>
+                </ListItemIcon>
+                <ListItemText>
+                    <Typography variant="inherit" noWrap>
+                        {session.name}
+                    </Typography>
+                </ListItemText>
+                {
+                    <IconButton onClick={handleClick} sx={{ color: 'primary.main' }} >
+                        {
+                            session.starred ? (
+                                <StarIcon fontSize="small" />
+                            ) : (
+                                hovering && (
+                                    <MoreHorizOutlinedIcon fontSize="small" />
+                                )
                             )
-                        )
-                    }
-                </IconButton>
-            }
-        </MenuItem>
-        <StyledMenu
+                        }
+                    </IconButton>
+                }
+            </MenuItem>
+            <StyledMenu
                 MenuListProps={{
                     'aria-labelledby': 'long-button',
                 }}

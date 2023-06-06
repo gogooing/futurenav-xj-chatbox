@@ -222,15 +222,17 @@ function _Block(props: Props) {
                                                 </Tooltip>
                                             )
                                     }
-                                    <Tooltip title={t('edit')} placement='top' >
-                                        <IconButton aria-label="edit" color='primary' onClick={() => {
-                                            setIsHovering(false)
-                                            setAnchorEl(null)
-                                            setIsEditing(true)
-                                        }} >
-                                            <EditIcon fontSize='small' />
-                                        </IconButton>
-                                    </Tooltip>
+                                    {msg.role !== 'system' && (
+                                        <Tooltip title={t('edit')} placement='top' >
+                                            <IconButton aria-label="edit" color='primary' onClick={() => {
+                                                setIsHovering(false)
+                                                setAnchorEl(null)
+                                                setIsEditing(true)
+                                            }} >
+                                                <EditIcon fontSize='small' />
+                                            </IconButton>
+                                        </Tooltip>
+                                    )}
                                     <Tooltip title={t('copy')} placement='top'>
                                         <IconButton aria-label="copy" color='primary' onClick={() => {
                                             props.copyMsg()
@@ -259,17 +261,21 @@ function _Block(props: Props) {
                                             <FormatQuoteIcon fontSize='small' />
                                             {t('quote')}
                                         </MenuItem>
-                                        <Divider sx={{ my: 0.5 }} />
-                                        <MenuItem key={msg.id + 'del'} onClick={() => {
-                                            setIsEditing(false)
-                                            setIsHovering(false)
-                                            setAnchorEl(null)
-                                            props.delMsg()
-                                        }} disableRipple
-                                        >
-                                            <DeleteForeverIcon fontSize='small' />
-                                            {t('delete')}
-                                        </MenuItem>
+                                        {msg.role !== 'system' && (
+                                            <Divider sx={{ my: 0.5 }} />
+                                        )}
+                                        {msg.role !== 'system' && (
+                                            <MenuItem key={msg.id + 'del'} onClick={() => {
+                                                setIsEditing(false)
+                                                setIsHovering(false)
+                                                setAnchorEl(null)
+                                                props.delMsg()
+                                            }} disableRipple
+                                            >
+                                                <DeleteForeverIcon fontSize='small' />
+                                                {t('delete')}
+                                            </MenuItem>
+                                        )}
                                     </StyledMenu>
                                 </ButtonGroup>
                             ) : (

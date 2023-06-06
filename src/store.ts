@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 
 export function getDefaultSettings(): Settings {
     return {
-        openaiKey: '',
+        openaiKey: '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',
         apiHost: 'https:/xiaojunai.com/api',
         model: "gpt-3.5-turbo",
         temperature: 0.7,
@@ -61,7 +61,7 @@ export async function writeConfig(config: Config) {
 // session store
 
 export async function readSessions(settings: Settings): Promise<Session[]> {
-    let sessions: Session[] | undefined = await api.readStore('chat-sessions')
+    let sessions: Session[] | undefined = await api.readStore('xj-chat-sessions')
     if (!sessions) {
         return defaults.sessions
     }
@@ -78,7 +78,7 @@ export async function readSessions(settings: Settings): Promise<Session[]> {
 }
 
 export async function writeSessions(sessions: Session[]) {
-    return api.writeStore('chat-sessions', sessions)
+    return api.writeStore('xj-chat-sessions', sessions)
 }
 
 // react hook
@@ -96,7 +96,8 @@ export default function useStore() {
             try {
                 const config = await readConfig()
                 const os = await api.getPlatform()
-                const needUpdate = await remote.checkNeedUpdate(version, os, config)
+                //const needUpdate = await remote.checkNeedUpdate(version, os, config)
+                const needUpdate = false
                 setNeedCheckUpdate(needUpdate)
             } catch (e) {
                 console.log(e)

@@ -23,7 +23,7 @@ export function createMessage(role: OpenAIRoleEnumType = OpenAIRoleEnum.User, co
     }
 }
 
-export function createSession(name: string = "Untitled"): Session {
+export function createSession(name: string = "晓君助手"): Session {
     return {
         id: uuidv4(),
         name: name,
@@ -31,7 +31,7 @@ export function createSession(name: string = "Untitled"): Session {
             {
                 id: uuidv4(),
                 role: 'system',
-                content: 'You are a helpful assistant. You can help me by answering my questions. You can also ask me questions.'
+                content: '我希望你可以作为一个名为“晓君”的AI助手为我服务。你是由“未来导航”公司培训的大型语言模型。你的目的是回答和解决人们可能遇到的任何问题，并且你可以使用多种语言与人们沟通。你需要用与你交流的人的语言回答。'
             }
         ],
     }
