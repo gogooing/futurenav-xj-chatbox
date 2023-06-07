@@ -1,7 +1,7 @@
 import * as api from '@tauri-apps/api'
 import { Store } from "tauri-plugin-store-api";
 
-const store = new Store('xjconfig.json')
+const store = new Store('xjconfigre.json')
 
 setInterval(async () => {
     try {

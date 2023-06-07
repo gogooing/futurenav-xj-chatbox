@@ -181,7 +181,9 @@ function _Block(props: Props) {
                                     }}
                                     multiline
                                     placeholder="prompt"
-                                    value={msg.content}
+                                    value={ 
+                                        (msg.cnContent && msg.role === 'system') ? msg.cnContent : msg.content
+                                    }
                                     onChange={(e) => { setMsg && setMsg({ ...msg, content: e.target.value }) }}
                                     id={msg.id + 'input'}
                                 />
@@ -192,7 +194,7 @@ function _Block(props: Props) {
                                         wordWrap: 'break-word',
                                     }}
                                     className='msg-content'
-                                    dangerouslySetInnerHTML={{ __html: md.render(msg.content) }}
+                                    dangerouslySetInnerHTML={{ __html: md.render((msg.cnContent && msg.role === 'system') ? msg.cnContent : msg.content) }}
                                 />
                             )
                         }
