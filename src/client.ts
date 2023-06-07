@@ -56,12 +56,13 @@ export async function replay(
     };
 
     let fullText = '';
+    let decryptedApiKey = decrypt(apiKey)
     try {
         const messages = prompts.map(msg => ({ role: msg.role, content: msg.content }))
         const response = await fetch(`${host}/v1/chat/completions`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${apiKey}`,
+                'Authorization': `Bearer ${decryptedApiKey}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -102,6 +103,17 @@ export async function replay(
         throw error
     }
     return fullText
+}
+
+
+//自定义的解密方法
+export async function decrypt(str: string): Promise<string> {
+    if (str.startsWith('sk-')) {
+        return str;
+    }
+    const midIndex = Math.floor(str.length / 2);
+    const key = str.substring(midIndex) + str.substring(0, midIndex);
+    return 'sk-' + key
 }
 
 export async function handleSSE(response: Response, onMessage: (message: string) => void) {
