@@ -59,7 +59,7 @@
                 "icons/icon.icns",
                 "icons/icon.ico"
             ],
-            "identifier": "xj.futurenav.apps.futurenav-xj-chatbox",
+            "identifier": "xj.futurenav.apps.xiaojunai",
             "longDescription": "",
             "macOS": {
                 "entitlements": null,

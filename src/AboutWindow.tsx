@@ -28,7 +28,7 @@ export default function AboutWindow(props: Props) {
     }, [props.open])
     return (
         <Dialog open={props.open} onClose={props.close} fullWidth>
-            <DialogTitle>{t('About chatbox')}</DialogTitle>
+            <DialogTitle>{t('About Xiaojun')}</DialogTitle>
             <DialogContent>
                 <Box sx={{ textAlign: 'center', padding: '0 20px' }}>
                     <img src={iconPNG} style={{ width: '100px', margin: 0 }} />
