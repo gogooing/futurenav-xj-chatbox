@@ -6,7 +6,7 @@ import {
 import { Session } from './types'
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import EditIcon from '@mui/icons-material/Edit';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import StyledMenu from './StyledMenu';
@@ -56,7 +56,7 @@ export default function SessionItem(props: Props) {
                 }}
             >
                 <ListItemIcon>
-                    <IconButton><ChatBubbleOutlineOutlinedIcon fontSize="small" /></IconButton>
+                    <IconButton><QuestionAnswerOutlinedIcon fontSize="small" /></IconButton>
                 </ListItemIcon>
                 <ListItemText>
                     <Typography variant="inherit" noWrap>
