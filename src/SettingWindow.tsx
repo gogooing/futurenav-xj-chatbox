@@ -19,14 +19,16 @@ import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCirc
 import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
 
 const { useEffect } = React
-const models: string[] = ['gpt-3.5-turbo', 'gpt-3.5-turbo-0301', 'gpt-4', 'gpt-4-0314', 'gpt-4-32k', 'gpt-4-32k-0314'];
+const models: string[] = ['gpt-3.5-turbo', 'gpt-3.5-turbo-0613', 'gpt-3.5-turbo-16k', 'gpt-3.5-turbo-16k-0613', 'gpt-4', 'gpt-4-0613', 'gpt-4-32k', 'gpt-4-32k-0613'];
 const modelsNew: { [key: string]: String } = {
     'gpt-3.5-turbo': 'XiaoJun 3.5',
-    'gpt-3.5-turbo-0301': 'XiaoJun 3.5 0301',
+    'gpt-3.5-turbo-0613': 'XiaoJun 3.5 0613',
+    'gpt-3.5-turbo-16k': 'XiaoJun 3.5 16k',
+    'gpt-3.5-turbo-16k-0613': 'XiaoJun 3.5 16k 0613',
     'gpt-4': 'XiaoJun 4',
-    'gpt-4-0314': 'XiaoJun 4 0314',
+    'gpt-4-0613': 'XiaoJun 4 0613',
     'gpt-4-32k': 'XiaoJun 4 32k',
-    'gpt-4-32k-0314': 'XiaoJun 4 32k 0314'
+    'gpt-4-32k-0613': 'XiaoJun 4 32k 0613'
 }
 const languages: string[] = ['zh-Hans', 'en', 'zh-Hant'];
 const languageMap: { [key: string]: string } = {
@@ -312,13 +314,13 @@ export default function SettingWindow(props: Props) {
                             />
                         </Box>
 
-                        <FormGroup>
+                        {/* <FormGroup>
                             <FormControlLabel control={<Switch />}
                                 label={t('show model name')}
                                 checked={settingsEdit.showModelName}
                                 onChange={(e, checked) => setSettingsEdit({ ...settingsEdit, showModelName: checked })}
                             />
-                        </FormGroup>
+                        </FormGroup> */}
 
                     </AccordionDetails>
                 </Accordion>
