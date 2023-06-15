@@ -9,7 +9,7 @@
     },
     "package": {
         "productName": "XiaoJun AI",
-        "version": "0.1.7"
+        "version": "0.1.8"
     },
     "tauri": {
         "allowlist": {
